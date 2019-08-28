@@ -19,7 +19,7 @@ import prismaBuildQuery from './buildQuery';
 import { Resource } from './constants/interfaces';
 import { ApolloClient, ApolloClientOptions } from 'apollo-client';
 
-export const buildQuery = prismaBuildQuery;
+export const buildQuery: any = prismaBuildQuery;
 
 const defaultOptions = {
   buildQuery,

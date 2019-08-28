@@ -79,7 +79,7 @@ export const buildFields: any = (introspectionResults: IntrospectionResult) => (
   );
 };
 
-export const getArgType = (arg: IntrospectionField) => {
+export const getArgType: any = (arg: IntrospectionField) => {
   const type = getFinalType(arg.type);
   const required = isRequired(arg.type);
   const list = isList(arg.type);
