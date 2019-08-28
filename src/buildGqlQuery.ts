@@ -24,11 +24,11 @@ export interface Query {
   args: IntrospectionField[];
 }
 
-export const buildFields = (introspectionResults: IntrospectionResult) => (
+export const buildFields: any = (introspectionResults: IntrospectionResult) => (
   fields: IntrospectionField[]
 ): FieldNode[] => {
   return fields.reduce(
-    (acc: FieldNode[], field) => {
+    (acc: FieldNode[], field: any) => {
       const type = getFinalType(field.type);
 
       if (type.name.startsWith('_')) {
@@ -100,7 +100,7 @@ export const getArgType = (arg: IntrospectionField) => {
   return gqlTypes.namedType(gqlTypes.name(type.name));
 };
 
-export const buildArgs = (
+export const buildArgs: any = (
   query: Query,
   variables: { [key: string]: any } = {}
 ) => {
@@ -125,7 +125,7 @@ export const buildArgs = (
     );
 };
 
-export const buildApolloArgs = (
+export const buildApolloArgs: any = (
   query: Query,
   variables: { [key: string]: any } = {}
 ) => {
@@ -177,7 +177,7 @@ const buildFieldsFromFragment = (
     } catch (e) {
       throw new Error(
         `Invalid fragment given for resource '${resourceName}' and fetchType '${fetchType}' (${
-          e.message
+        e.message
         }).`
       );
     }
@@ -200,8 +200,8 @@ export default (introspectionResults: IntrospectionResult) => (
   const fields = !!fragment
     ? buildFieldsFromFragment(fragment, resource.type.name, aorFetchType)
     : buildFields(introspectionResults)(
-        (resource.type as IntrospectionObjectType).fields
-      );
+      (resource.type as IntrospectionObjectType).fields
+    );
 
   if (
     aorFetchType === GET_LIST ||

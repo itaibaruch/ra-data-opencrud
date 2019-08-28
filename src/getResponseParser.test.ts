@@ -112,9 +112,9 @@ const testListTypes = (type: string) => {
     };
 
     expect(
-      getResponseParser(introspectionResults as IntrospectionResult)(
+      getResponseParser(<unknown>introspectionResults as IntrospectionResult)(
         type,
-        resource as Resource
+        <unknown>resource as Resource
       )(response)
     ).toEqual({
       data: [
@@ -234,9 +234,9 @@ const testSingleTypes = (type: string) => {
       }
     };
     expect(
-      getResponseParser(introspectionResults as IntrospectionResult)(
+      getResponseParser(<unknown>introspectionResults as IntrospectionResult)(
         type,
-        resource as Resource
+        <unknown>resource as Resource
       )(response)
     ).toEqual({
       data: {
